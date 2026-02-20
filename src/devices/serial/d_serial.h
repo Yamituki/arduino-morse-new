@@ -11,7 +11,8 @@
 #define D_SERIAL_H
 
 #include "../../constants/constant.h"
+#include "../../bsw/serial/b_serial.h"
 
-bserial_serial_device_t* createSerialDevice(int boudRate, int rxBufferSize);
+serial_device_t* dSerialCreate(int baudRate);
 
 #endif  // D_SERIAL_H

@@ -10,6 +10,7 @@
 #include "d_serial.h"
 
 #include "../../constants/constant.h"
+#include "../../bsw/serial/b_serial.h"
 
 typedef struct {
   int baudRate;
@@ -17,10 +18,8 @@ typedef struct {
   int rxBufferSize;
 } serial_ctx_t;
 
-bserial_serial_device_t* createSerialDevice(int boudRate, int rxBufferSize) {
-  // Implementation to create and return a serial device based on the baud rate
-  // This is a placeholder implementation
-  return new bserial_serial_device_t{
+serial_device_t* dSerialCreate(int baudRate) {
+  return new serial_device_t{
       .ctx = nullptr,
       .ops = nullptr,
   };
