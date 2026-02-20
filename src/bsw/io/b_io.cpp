@@ -15,7 +15,7 @@
 #include "b_io.h"
 
 #include "../../constants/constant.h"
-#include "b_io_t.h"
+#include "../../interfaces/i_io_t.h"
 
 /******************************************************************************
  *                                                                            *
@@ -39,7 +39,7 @@
  *                            出力デバイスエントリ構造体                       *
  *============================================================================*/
 typedef struct {
-  const bio_output_device_t* device;
+  const output_device_t* device;
   bool desired;
 } OutputDeviceEntry_t;
 
@@ -52,7 +52,7 @@ typedef struct {
 /*============================================================================*
  *                            入力デバイス配列                                 *
  *============================================================================*/
-const static bio_input_device_t* inputDevices[MAX_INPUT_DEVICES] = {0};
+const static input_device_t* inputDevices[MAX_INPUT_DEVICES] = {0};
 
 /*============================================================================*
  *                            出力デバイス配列                                 *
@@ -95,7 +95,7 @@ void bswIOOutputProcess() {
  *                              入力デバイス登録関数                           *
  *                                                                            *
  ******************************************************************************/
-global_err_t bswRegisterInputDevice(bio_input_device_t* device) {
+global_err_t bswRegisterInputDevice(input_device_t* device) {
   inputDevices[device->tag] = device;
   return GLOBAL_OK;
 }
@@ -105,7 +105,7 @@ global_err_t bswRegisterInputDevice(bio_input_device_t* device) {
  *                              出力デバイス登録関数                           *
  *                                                                            *
  ******************************************************************************/
-global_err_t bswRegisterOutputDevice(bio_output_device_t* device) {
+global_err_t bswRegisterOutputDevice(output_device_t* device) {
   /*----------------------------------------------------------------------------*
    *                          静的配列からエントリ取得                          *
    *----------------------------------------------------------------------------*/
@@ -122,11 +122,11 @@ global_err_t bswRegisterOutputDevice(bio_output_device_t* device) {
  *                              入力デバイス状態取得関数                       *
  *                                                                            *
  ******************************************************************************/
-global_err_t bswGetInputState(bio_input_tag_t tag, void* out) {
+global_err_t bswGetInputState(input_tag_t tag, void* out) {
   /*----------------------------------------------------------------------------*
    *                          デバイス取得                                      *
    *----------------------------------------------------------------------------*/
-  const bio_input_device_t* device = inputDevices[tag];
+  const input_device_t* device = inputDevices[tag];
 
   /*----------------------------------------------------------------------------*
    *                          NULLチェック                                      *
@@ -143,7 +143,7 @@ global_err_t bswGetInputState(bio_input_tag_t tag, void* out) {
  *                              出力デバイス状態設定関数                       *
  *                                                                            *
  ******************************************************************************/
-global_err_t bswSetOutputState(bio_output_tag_t tag, bool value) {
+global_err_t bswSetOutputState(output_tag_t tag, bool value) {
   /*----------------------------------------------------------------------------*
    *                          エントリ取得                                      *
    *----------------------------------------------------------------------------*/

@@ -16,7 +16,7 @@
  *                                                                            *
  ******************************************************************************/
 #include "../../constants/constant.h"
-#include "b_io_t.h"
+#include "../../interfaces/i_io_t.h"
 
 /******************************************************************************
  *                                                                            *
@@ -33,8 +33,14 @@ void bswIOOutputProcess();
 /*============================================================================*
  *                            デバイス状態操作関数                             *
  *============================================================================*/
-global_err_t bswGetInputState(bio_input_tag_t tag, void* out);
-global_err_t bswSetOutputState(bio_output_tag_t tag, bool value);
-global_err_t bswCommitOutputState(bio_output_tag_t tag);
+global_err_t bswGetInputState(input_tag_t tag, void* out);
+global_err_t bswSetOutputState(output_tag_t tag, bool value);
+global_err_t bswCommitOutputState(output_tag_t tag);
+
+/*============================================================================*
+ *                            デバイス登録関数                                 *
+ *============================================================================*/
+global_err_t bswRegisterInputDevice(input_device_t* device);
+global_err_t bswRegisterOutputDevice(output_device_t* device);
 
 #endif  // B_IO_H
