@@ -71,14 +71,14 @@ static OutputDeviceEntry_t* outputDevices[MAX_OUTPUT_DEVICES] = {0};
  *                              BSW_インプット取得処理関数                     *
  *                                                                            *
  ******************************************************************************/
-void bswIOInputProcess() {}
+void bIOInputProcess() {}
 
 /******************************************************************************
  *                                                                            *
  *                              BSW_アウトプット設定処理関数                   *
  *                                                                            *
  ******************************************************************************/
-void bswIOOutputProcess() {
+void bIOOutputProcess() {
   /*----------------------------------------------------------------------------*
    *                          全出力デバイス走査                                *
    *----------------------------------------------------------------------------*/
@@ -95,7 +95,7 @@ void bswIOOutputProcess() {
  *                              入力デバイス登録関数                           *
  *                                                                            *
  ******************************************************************************/
-global_err_t bswRegisterInputDevice(input_device_t* device) {
+global_err_t bIORegisterInputDevice(input_device_t* device) {
   inputDevices[device->tag] = device;
   return GLOBAL_OK;
 }
@@ -105,7 +105,7 @@ global_err_t bswRegisterInputDevice(input_device_t* device) {
  *                              出力デバイス登録関数                           *
  *                                                                            *
  ******************************************************************************/
-global_err_t bswRegisterOutputDevice(output_device_t* device) {
+global_err_t bIORegisterOutputDevice(output_device_t* device) {
   /*----------------------------------------------------------------------------*
    *                          静的配列からエントリ取得                          *
    *----------------------------------------------------------------------------*/
@@ -122,7 +122,7 @@ global_err_t bswRegisterOutputDevice(output_device_t* device) {
  *                              入力デバイス状態取得関数                       *
  *                                                                            *
  ******************************************************************************/
-global_err_t bswGetInputState(input_tag_t tag, void* out) {
+global_err_t bIOGetInputState(input_tag_t tag, void* out) {
   /*----------------------------------------------------------------------------*
    *                          デバイス取得                                      *
    *----------------------------------------------------------------------------*/
@@ -143,7 +143,7 @@ global_err_t bswGetInputState(input_tag_t tag, void* out) {
  *                              出力デバイス状態設定関数                       *
  *                                                                            *
  ******************************************************************************/
-global_err_t bswSetOutputState(output_tag_t tag, bool value) {
+global_err_t bIOSetOutputState(output_tag_t tag, bool value) {
   /*----------------------------------------------------------------------------*
    *                          エントリ取得                                      *
    *----------------------------------------------------------------------------*/

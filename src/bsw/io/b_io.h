@@ -27,20 +27,19 @@
 /*============================================================================*
  *                            BSW処理関数                                      *
  *============================================================================*/
-void bswIOInputProcess();
-void bswIOOutputProcess();
+void bIOInputProcess();
+void bIOOutputProcess();
 
 /*============================================================================*
  *                            デバイス状態操作関数                             *
  *============================================================================*/
-global_err_t bswGetInputState(input_tag_t tag, void* out);
-global_err_t bswSetOutputState(output_tag_t tag, bool value);
-global_err_t bswCommitOutputState(output_tag_t tag);
+global_err_t bIOGetInputState(input_tag_t tag, void* out);
+global_err_t bIOSetOutputState(output_tag_t tag, bool value);
 
 /*============================================================================*
  *                            デバイス登録関数                                 *
  *============================================================================*/
-global_err_t bswRegisterInputDevice(input_device_t* device);
-global_err_t bswRegisterOutputDevice(output_device_t* device);
+global_err_t bIORegisterInputDevice(input_device_t* device);
+global_err_t bIORegisterOutputDevice(output_device_t* device);
 
 #endif  // B_IO_H
