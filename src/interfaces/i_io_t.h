@@ -28,7 +28,7 @@
  *============================================================================*/
 typedef enum {
   ST_SW = 0,
-} bio_input_tag_t;
+} input_tag_t;
 
 /*============================================================================*
  *                            入力操作関数ポインタ型                           *
@@ -37,16 +37,16 @@ typedef struct {
   global_err_t (*init)(void* ctx);
   global_err_t (*get)(void* ctx, void* out);
   global_err_t (*poll)(void* ctx);
-} bio_input_device_ops_t;
+} input_device_ops_t;
 
 /*============================================================================*
  *                            入力デバイス構造体                               *
  *============================================================================*/
 typedef struct {
-  const bio_input_tag_t tag;
+  const input_tag_t tag;
   const void* ctx;
-  const bio_input_device_ops_t* ops;
-} bio_input_device_t;
+  const input_device_ops_t* ops;
+} input_device_t;
 
 /******************************************************************************
  *                                                                            *
@@ -60,7 +60,7 @@ typedef struct {
 typedef enum {
   LED_MORSE = 0,
   LED_STATUS = 1,
-} bio_output_tag_t;
+} output_tag_t;
 
 /*============================================================================*
  *                            出力操作関数ポインタ型                           *
@@ -68,27 +68,15 @@ typedef enum {
 typedef struct {
   global_err_t (*init)(void* ctx);
   global_err_t (*set)(void* ctx, bool value);
-} bio_output_device_ops_t;
+} output_device_ops_t;
 
 /*============================================================================*
  *                            出力デバイス構造体                               *
  *============================================================================*/
 typedef struct {
-  const bio_output_tag_t tag;
+  const output_tag_t tag;
   void* ctx;
-  const bio_output_device_ops_t* ops;
-} bio_output_device_t;
-
-/******************************************************************************
- *                                                                            *
- *                              関数プロトタイプ                               *
- *                                                                            *
- ******************************************************************************/
-
-/*============================================================================*
- *                            デバイス登録関数                                 *
- *============================================================================*/
-global_err_t bswRegisterInputDevice(bio_input_device_t* device);
-global_err_t bswRegisterOutputDevice(bio_output_device_t* device);
+  const output_device_ops_t* ops;
+} output_device_t;
 
 #endif  // I_IO_T_H
