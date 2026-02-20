@@ -12,11 +12,11 @@
  *                              ライブラリ読み込み                             *
  *                                                                            *
  ******************************************************************************/
-#include "switch.h"
+#include "d_switch.h"
 
 #include "../../bsw/io/b_io_t.h"
 #include "../../constants/constant.h"
-#include "../../hal/arduino/hal_arduino.h"
+#include "../../hal/arduino/h_arduino.h"
 
 /******************************************************************************
  *                                                                            *
