@@ -2,7 +2,7 @@
  ******************************************************************************
  **                                                                          **
  **                          ファイルヘッダー                                  **
- **                          File: led.cpp                                   **
+ **                          File: d_led.cpp                                   **
  **                                                                          **
  ******************************************************************************
  ******************************************************************************/
@@ -14,7 +14,7 @@
  ******************************************************************************/
 #include "d_led.h"
 
-#include "../../bsw/io/b_io_t.h"
+#include "../../interfaces/i_io_t.h"
 #include "../../constants/constant.h"
 #include "../../hal/arduino/h_arduino.h"
 
@@ -103,7 +103,7 @@ static led_ctx_t ledCtx;
 /*============================================================================*
  *                            LED操作関数テーブル                              *
  *============================================================================*/
-const static bio_output_device_ops_t ledOps = {
+const static output_device_ops_t ledOps = {
     .init = ledInit,
     .set = ledSet,
 };
@@ -113,8 +113,8 @@ const static bio_output_device_ops_t ledOps = {
  *                              LEDデバイス生成関数                            *
  *                                                                            *
  ******************************************************************************/
-bio_output_device_t* createLedOutputDevice(int pin, bio_output_tag_t tag) {
-  return new bio_output_device_t{
+output_device_t* createLedOutputDevice(int pin, output_tag_t tag) {
+  return new output_device_t{
       .tag = tag,
       .ctx = &ledCtx,
       .ops = &ledOps,

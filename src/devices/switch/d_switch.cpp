@@ -14,7 +14,7 @@
  ******************************************************************************/
 #include "d_switch.h"
 
-#include "../../bsw/io/b_io_t.h"
+#include "../../interfaces/i_io_t.h"
 #include "../../constants/constant.h"
 #include "../../hal/arduino/h_arduino.h"
 
@@ -166,7 +166,7 @@ switch_ctx_t switchCtx;
 /*============================================================================*
  *                            スイッチ操作関数テーブル                         *
  *============================================================================*/
-bio_input_device_ops_t switchOps = {
+input_device_ops_t switchOps = {
     .init = switchInit,
     .get = switchGet,
     .poll = switchPoll,
@@ -177,7 +177,7 @@ bio_input_device_ops_t switchOps = {
  *                              スイッチデバイス生成関数                       *
  *                                                                            *
  ******************************************************************************/
-bio_input_device_t* createSwitchInputDevice(int pin, bio_input_tag_t tag) {
+input_device_t* createSwitchInputDevice(int pin, input_tag_t tag) {
   /*----------------------------------------------------------------------------*
    *                          コンテキスト設定                                  *
    *----------------------------------------------------------------------------*/
@@ -186,7 +186,7 @@ bio_input_device_t* createSwitchInputDevice(int pin, bio_input_tag_t tag) {
   /*----------------------------------------------------------------------------*
    *                          デバイス生成                                      *
    *----------------------------------------------------------------------------*/
-  return new bio_input_device_t{
+  return new input_device_t{
       .tag = tag,
       .ctx = &switchCtx,
       .ops = &switchOps,

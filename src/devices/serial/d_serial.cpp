@@ -9,7 +9,6 @@
 
 #include "d_serial.h"
 
-#include "../../bsw/serial/b_serial_t.h"
 #include "../../constants/constant.h"
 
 typedef struct {
