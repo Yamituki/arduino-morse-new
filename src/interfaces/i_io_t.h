@@ -2,13 +2,13 @@
  ******************************************************************************
  **                                                                          **
  **                          ファイルヘッダー                                  **
- **                          File: b_io_t.h                                  **
+ **                          File: i_io_t.h                                  **
  **                                                                          **
  ******************************************************************************
  ******************************************************************************/
 
-#ifndef B_IO_T_H
-#define B_IO_T_H
+#ifndef I_IO_T_H
+#define I_IO_T_H
 
 /******************************************************************************
  *                                                                            *
@@ -91,4 +91,4 @@ typedef struct {
 global_err_t bswRegisterInputDevice(bio_input_device_t* device);
 global_err_t bswRegisterOutputDevice(bio_output_device_t* device);
 
-#endif  // B_IO_T_H
+#endif  // I_IO_T_H
